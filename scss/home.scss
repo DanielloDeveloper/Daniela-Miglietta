@@ -1,0 +1,381 @@
+//Stile header e main base
+main {
+   margin-left: 280px; //tutto il sito a 280px dell'header
+}
+//header
+.header {
+   position: fixed;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   top: 0;
+   width: 280px;
+   height: 100%;
+   background: var(--header);
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   z-index: 1000;
+   //colore testo
+   h1,
+   span,
+   li,
+   a,
+   h3,
+   i {
+      color: hsl(0, 0%, 100%);
+   }
+   //stile info
+   .info {
+      flex: 0.4;
+      //stile img
+      img {
+         margin: 10px auto;
+         display: block;
+         width: 120px;
+         border: 6px solid var(--colore1);
+         border-radius: 50%;
+         transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+         cursor: pointer;
+      }
+      //stile text
+      h1 {
+         text-align: center;
+      }
+      //stile social
+      .social {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         margin-top: 15px;
+         i {
+            padding: 10px;
+            background: var(--bg);
+            margin: 12px 5px 5px 12px;
+            border-radius: 8px;
+            transition: 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            box-shadow: 1px 8px 13px 5px rgba(34, 34, 34, 0.33);
+            color: var(--text);
+            &:hover {
+               background: var(--text);
+               color: var(--bg);
+            }
+         }
+      }
+   }
+   //stile change
+   .change {
+      flex: 0.13;
+      font-weight: bold;
+      margin: 30px;
+      border-radius: 6px;
+      position: relative;
+      #light,
+      #dark {
+         padding: 15px;
+         font-size: 29px;
+         color: hsl(60, 61%, 56%);
+         cursor: pointer;
+         display: none;
+         width: 100%;
+         height: 100%;
+         &::after {
+            content: "Cambio tema";
+            color: hsl(0, 0%, 100%);
+            font-size: calc(0.5rem + 1vmin);
+            margin: -2px 0 0 20px;
+            font-weight: bold;
+         }
+      }
+      #light.active,
+      #dark.active {
+         display: block;
+         display: flex;
+         align-items: center;
+      }
+   }
+   //stile menu
+   .menu {
+      flex: 0.4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ul {
+         list-style: none;
+         padding: 20px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         li {
+            font-size: calc(0.7rem + 1.2vmin);
+            font-weight: bold;
+            width: 100%;
+            position: relative;
+            margin: 15px;
+            a {
+               text-align: justify;
+               margin-left: calc(1.4rem + 1.2vmin);
+               padding: 5px;
+            }
+         }
+      }
+   }
+}
+//header mob
+.header-mob {
+   width: 100%;
+   height: 8vh;
+   background: none;
+   position: fixed;
+   display: flex;
+   align-items: center;
+   display: none;
+   z-index: 999;
+   .button {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      i {
+         position: absolute;
+         top: 50%;
+         right: 30px;
+         transform: translateY(-50%);
+         cursor: pointer;
+         color: hsl(0, 0%, 100%);
+         font-size: 30px;
+         font-weight: bold;
+      }
+   }
+}
+//homepage
+#homepage {
+   width: 100%;
+   height: 100vh;
+   background: url(/assets/homepage/bg.jpg) no-repeat center bottom #757474;
+   background-size: cover;
+   background-blend-mode: multiply;
+   padding: 0;
+   .hero {
+      width: 100%;
+      height: 100%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h1 {
+         padding: 30px;
+         font-weight: bold;
+         letter-spacing: 1px;
+         text-align: center;
+      }
+      p {
+         padding: 10px;
+         line-height: 2rem;
+         letter-spacing: 2px;
+         font-weight: 400;
+         span {
+            font-weight: bold;
+            color: var(--colore1);
+            margin-bottom: 5px;
+            border-bottom: 4px solid var(--colore1);
+         }
+      }
+      .button-hero {
+         padding: 15px;
+         width: 300px;
+         max-width: 220px;
+         z-index: 2;
+         &:hover {
+            border: none;
+            background: var(--colore1);
+            color: hsl(0, 0%, 100%);
+            font-weight: lighter;
+         }
+      }
+   }
+}
+
+//media query principale
+@media (max-width: 1024px) {
+   main {
+      margin-left: 0; //aggiustamento main
+   }
+   .header-mob {
+      display: block; //comparsa header mobile
+   }
+   .header-mob.active {
+      background: var(--header);
+   }
+   .header {
+      width: 220px;
+      left: -100%;
+      transition: 1s cubic-bezier(0.23, 1, 0.32, 1);
+   }
+   .header.active {
+      left: 0; //active menu mobile
+   }
+   //stile homepage
+   #homepage .hero h1 {
+      padding: 0;
+   }
+}
+//media query per telefoni
+@media (max-width: 768px) {
+   .header {
+      //aggiusto il div top con l'altezza nav
+      .info {
+         padding: 0;
+         margin: 2px;
+         //nascondo l'h1 (daniela miglietta)
+         h1 {
+            display: none;
+         }
+         //riduco l'immagine
+         img {
+            width: 90px;
+         }
+      }
+      //riduco lo spazio tra i li
+      ul li {
+         margin: 6px;
+      }
+   }
+}
+//media query per tablet
+@media (min-width: 768px) and (max-width: 1024px) {
+   //STILE HEADER
+   .header {
+      width: 100%;
+      top: 6vh;
+      overflow: auto;
+      //stile div info
+      .info {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         flex: 0.35;
+         img {
+            width: 150px;
+         }
+         .social {
+            flex-direction: column;
+            padding: 20px;
+            i {
+               font-size: 26px;
+            }
+         }
+      }
+      //stile change
+      .change {
+         margin: 15px 0 15px 0;
+         flex: 0.2;
+         i {
+            align-items: center;
+            justify-content: center;
+         }
+      }
+      //stile menu
+      .menu {
+         flex: 0.35;
+         ul {
+            flex-direction: column;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            li {
+               width: auto;
+               font-size: calc(1rem + 1.6vmin);
+            }
+         }
+      }
+   }
+   .header-mob {
+      height: 6vh; //header pù bassa
+   }
+   #homepage {
+      height: 50vh; //homepage meno alta
+   }
+}
+//media query per telefoni più piccoli
+@media (max-width: 360px) {
+   .header {
+      .info {
+         padding: 0;
+      }
+   }
+   #homepage {
+      h1 {
+         position: absolute;
+         top: 40vh;
+      }
+      p {
+         position: absolute;
+         top: 48vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         padding: 0;
+         margin: 0;
+      }
+      .typed-cursor {
+         display: none;
+      }
+      .button-hero {
+         position: absolute;
+         top: 65vh;
+      }
+   }
+}
+//media landascape
+@media (max-width: 1000px) and (orientation: landscape) {
+   //STILE HEADER
+   .header {
+      width: 100%;
+      top: 10vh;
+      overflow: auto;
+      //stile div info
+      .info {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: space-evenly;
+         flex: 0.3;
+         img {
+            margin: 0;
+            width: 90px;
+         }
+         .social {
+            flex-direction: row;
+            margin: 0;
+         }
+      }
+      //stile change
+      .change {
+         margin: 15px 0 0 0;
+         flex: 0.1;
+         i {
+            align-items: center;
+            justify-content: center;
+         }
+      }
+      //stile menu
+      .menu {
+         flex: 0.3;
+         ul {
+            flex-direction: row;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+         }
+      }
+   }
+   //STILE HEADER MOB
+   .header-mob {
+      height: 12vh;
+   }
+}

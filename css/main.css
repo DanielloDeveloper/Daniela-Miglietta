@@ -1,0 +1,11 @@
+/*import file css*/
+@import url(/css/base.css);
+@import url(/css/home.css);
+@import url(/css/about.css);
+@import url(/css/servizi.css);
+@import url(/css/footer.css);
+/*import file css delle librerie*/
+@import url("/librerie/boxicons/css/boxicons.min.css");
+/*iimport font*/
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap"); /*font-family: 'Baloo 2', cursive;*/
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap"); /*font-family: 'Libre Baskerville', serif;*/
